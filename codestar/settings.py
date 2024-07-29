@@ -33,7 +33,6 @@ DEBUG = False
 ALLOWED_HOSTS = ["8000-jpudsey11-djangoblog-h1ijryyoen5.ws-eu115.gitpod.io", ".herokuapp.com"]
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
+    'blog',  # Add your blog app here
 ]
 
 MIDDLEWARE = [
