@@ -9,9 +9,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ["8000-jpudsey11-djangoblog-wd1c8uoyz6i.ws-eu115.gitpod.io", ".herokuapp.com", "127.0.0.1"]
+ALLOWED_HOSTS = [
+    "8000-jpudsey11-djangoblog-wd1c8uoyz6i.ws-eu115.gitpod.io",
+    ".herokuapp.com",
+    "127.0.0.1"
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -57,11 +61,6 @@ DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://*.codeanyapp.com",
-    "https://*.herokuapp.com"
-]
-
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -80,3 +79,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://8000-jpudsey11-djangoblog-wd1c8uoyz6i.ws-eu115.gitpod.io",
+    "https://*.herokuapp.com",
+    "https://*.gitpod.io",
+]
