@@ -2,17 +2,16 @@ import os
 from pathlib import Path
 import dj_database_url
 
-# Load environment variables from env.py if it exists
 if os.path.isfile('env.py'):
     import env
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Use environment variables with default fallback values
-SECRET_KEY = os.environ.get('SECRET_KEY', 'your_default_secret_key')
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ["8000-jpudsey11-djangoblog-h1ijryyoen5.ws-eu115.gitpod.io", ".herokuapp.com"]
+ALLOWED_HOSTS = ["8000-jpudsey11-djangoblog-h1ijryyoen5.ws-eu115.gitpod.io", ".herokuapp.com", "127.0.0.1"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -39,7 +38,7 @@ ROOT_URLCONF = 'codestar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -55,7 +54,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'codestar.wsgi.application'
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL', 'postgres://your_default_database_url'))
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -71,4 +70,8 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE
+USE_TZ = True
+
+STATIC_URL = 'static/'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
